@@ -26,7 +26,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ onLogin }) => {
       </h2>
       <p className="mb-4 text-yellow-400">
         <FaExclamationTriangle className="inline mr-2" />
-        For demo purposes, the password is "Jerry"
+        For demo purposes, the password is &quot;Jerry&quot;
       </p>
       <form onSubmit={handleSubmit} className="flex flex-col items-center">
         <div className="mb-4 flex items-center">

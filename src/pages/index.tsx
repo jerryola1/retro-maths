@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { FaCalculator, FaMicrochip, FaClock, FaStar, FaHeart, FaGamepad, FaRedo, FaCheck, FaDumbbell, FaTimes, FaSmile, FaFrown, FaSignOutAlt } from 'react-icons/fa';
 import LoginScreen from "../components/LoginScreen";
 
@@ -94,25 +94,7 @@ const GameScreen: React.FC<{
   const [feedback, setFeedback] = useState<string | null>(null);
   const [gameOver, setGameOver] = useState(false);
 
-  useEffect(() => {
-    if (!gameOver) {
-      generateNewProblem();
-      const timer = setInterval(() => {
-        setTimeLeft((prevTime) => {
-          if (prevTime <= 1) {
-            clearInterval(timer);
-            setGameOver(true);
-            return 0;
-          }
-          return prevTime - 1;
-        });
-      }, 1000);
-
-      return () => clearInterval(timer);
-    }
-  }, [gameOver]);
-
-  const generateNewProblem = () => {
+  const generateNewProblem = useCallback(() => {
     const operators = ['+', '-', '*', '/'];
     const operator = operators[Math.floor(Math.random() * operators.length)];
     let a, b;
@@ -141,7 +123,25 @@ const GameScreen: React.FC<{
     }
 
     setCurrentProblem({ a, b, operator });
-  };
+  }, [difficulty]);
+
+  useEffect(() => {
+    if (!gameOver) {
+      generateNewProblem();
+      const timer = setInterval(() => {
+        setTimeLeft((prevTime) => {
+          if (prevTime <= 1) {
+            clearInterval(timer);
+            setGameOver(true);
+            return 0;
+          }
+          return prevTime - 1;
+        });
+      }, 1000);
+
+      return () => clearInterval(timer);
+    }
+  }, [gameOver, generateNewProblem]);
 
   const handleAnswer = (answer: number) => {
     if (!currentProblem) return;
