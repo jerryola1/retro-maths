@@ -43,6 +43,14 @@ const MathProblem: React.FC<{
 }> = ({ problem, onAnswer, feedback }) => {
   const [userAnswer, setUserAnswer] = useState('');
 
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    // Allow empty string, minus sign, decimal point, and numbers
+    if (value === '' || /^-?\d*\.?\d*$/.test(value)) {
+      setUserAnswer(value);
+    }
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onAnswer(parseFloat(userAnswer));
@@ -61,11 +69,10 @@ const MathProblem: React.FC<{
       </p>
       <form onSubmit={handleSubmit} className="flex justify-center items-center">
         <input
-          type="number"
-          inputMode="decimal"
-          pattern="[0-9]*"
+          type="text"
+          inputMode="numeric"
           value={userAnswer}
-          onChange={(e) => setUserAnswer(e.target.value)}
+          onChange={handleInputChange}
           className="bg-black border-2 border-green-500 text-green-500 px-4 py-2 mr-2 text-xl w-24 text-center rounded"
           autoFocus
         />
