@@ -62,6 +62,8 @@ const MathProblem: React.FC<{
       <form onSubmit={handleSubmit} className="flex justify-center items-center">
         <input
           type="number"
+          inputMode="decimal"
+          pattern="[0-9]*"
           value={userAnswer}
           onChange={(e) => setUserAnswer(e.target.value)}
           className="bg-black border-2 border-green-500 text-green-500 px-4 py-2 mr-2 text-xl w-24 text-center rounded"
