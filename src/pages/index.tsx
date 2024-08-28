@@ -53,8 +53,16 @@ const MathProblem: React.FC<{
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onAnswer(parseFloat(userAnswer));
-    setUserAnswer('');
+    if (userAnswer) {
+      onAnswer(parseFloat(userAnswer));
+      setUserAnswer('');
+    }
+  };
+
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter' && userAnswer) {
+      handleSubmit(e);
+    }
   };
 
   if (!problem) {
@@ -70,9 +78,9 @@ const MathProblem: React.FC<{
       <form onSubmit={handleSubmit} className="flex justify-center items-center">
         <input
           type="text"
-          inputMode="numeric"
           value={userAnswer}
           onChange={handleInputChange}
+          onKeyPress={handleKeyPress}
           className="bg-black border-2 border-green-500 text-green-500 px-4 py-2 mr-2 text-xl w-24 text-center rounded"
           autoFocus
         />
