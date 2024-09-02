@@ -7,6 +7,11 @@ interface MathProblem {
   b: number;
   operator: string;
 }
+// interface MathProblem {
+//   a: number;
+//   b: number;
+//   operator: string;
+// }
 
 const SplashScreen: React.FC<{ onStart: (difficulty: string) => void; username: string }> = ({ onStart, username }) => {
   const [difficulty, setDifficulty] = useState("easy");
