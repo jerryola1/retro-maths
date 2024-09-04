@@ -15,16 +15,31 @@ Matrix Math Challenge is an interactive web-based math game built with Next.js a
 
 To run this project locally, follow these steps:
 
-1. Clone the repository
-2. Install dependencies:
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/jerryola1/retro-maths.git
+   ```
+   or
+   ```bash
+   git clone git@github.com:jerryola1/retro-maths.git
+   ```
+
+2. Navigate to the project directory:
+   ```bash
+   cd retro-maths
+   ```
+
+3. Install dependencies:
    ```bash
    npm install
    ```
-3. Run the development server:
+
+4. Run the development server:
    ```bash
    npm run dev
    ```
-4. Open [http://localhost:3000](http://localhost:3000) in your browser to play the game
+
+5. Open [http://localhost:3000](http://localhost:3000) in your browser to play the game
 
 ## How to Play
 
@@ -50,12 +65,26 @@ To run this project locally, follow these steps:
 
 ## Deployment
 
-This project can be easily deployed on Vercel. For other deployment options, refer to the [Next.js deployment documentation](https://nextjs.org/docs/deployment).
+This project is deployed on Vercel. You can view the live version at [retro-maths.vercel.app](https://retro-maths.vercel.app).
+
+For other deployment options, refer to the [Next.js deployment documentation](https://nextjs.org/docs/deployment).
 
 ## Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+Contributions are welcome and appreciated! Here's how you can contribute:
+
+1. Fork the repository
+2. Create your feature branch: `git checkout -b feature/AmazingFeature`
+3. Commit your changes: `git commit -m 'Add some AmazingFeature'`
+4. Push to the branch: `git push origin feature/AmazingFeature`
+5. Open a pull request
+
+Please make sure to update tests as appropriate and adhere to the existing coding style.
 
 ## License
 
 This project is open source and available under the [MIT License](LICENSE).
+
+## Questions or Suggestions?
+
+Feel free to open an issue or contact the repository owner if you have any questions or suggestions to improve the game.
